@@ -1,0 +1,22 @@
+server:
+  port: 11001
+
+spring:
+  application:
+    name: mall-ware
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://111.231.89.200:3310/mall_wms?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    driver-class-name: com.mysql.jdbc.Driver
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 111.231.89.200:1111
+
+
+mybatis-plus:
+  mapper-locations: classpath*:mapper/**/*.xml
+  global-config:
+    db-config:
+      id-type: auto

@@ -27,5 +27,7 @@ hs_err_pid*
 **/mvnw.cmd
 **/.mvn
 **/target
+renren-fast
+renren-generator
 
 HELP.md

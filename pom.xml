@@ -6,7 +6,7 @@
     <groupId>com.bay.mall</groupId>
     <artifactId>mall</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>mall</name>
+    <name>s-gl-mall</name>
     <description>商城</description>
     <packaging>pom</packaging>
 
@@ -16,6 +16,9 @@
         <module>mall-member</module>
         <module>mall-order</module>
         <module>mall-product</module>
+        <module>renren-fast</module>
+        <module>renren-generator</module>
+        <module>mall-common</module>
     </modules>
 
 </project>
