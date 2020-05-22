@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.bay.mall</groupId>
-    <artifactId>mall</artifactId>
+    <artifactId>s-gl-mall</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>s-gl-mall</name>
     <description>商城</description>
@@ -21,4 +21,17 @@
         <module>mall-common</module>
     </modules>
 
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <fork>true</fork>
+                    <addResources>true</addResources>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

@@ -1,0 +1,19 @@
+server:
+  port: 7001
+
+spring:
+  application:
+    name: mall-coupon
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 111.231.89.200:1111
+      config:
+        server-addr: 111.231.89.200:1111
+        file-extension: yaml
+        group: DEV_GROUP
+        namespace: b6a22f27-aa7a-456f-a64d-3ffad8f81b3c
+
+
+# 配置文件
+# ${spring.application.name}-${spring.profile.active}.${spring.cloud.nacos.config.file-extension}
