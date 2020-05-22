@@ -1,0 +1,22 @@
+server:
+  port: 88
+
+
+spring:
+  application:
+    name: mall-gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 111.231.89.200:1111
+    gateway:
+      routes:
+        - id: query_route
+          uri: https://www.baidu.com
+          predicates:
+            - Query=url,baidu
+
+        - id: qq_route
+          uri: https://www.qq.com
+          predicates:
+            - Query=url,qq
