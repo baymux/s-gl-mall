@@ -8,7 +8,7 @@ import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
 
 /**
  * @ClassName CorsConfiguration
- * @Description TODO 配置全局跨域
+ * @Description 配置全局跨域
  * @Author baymux
  * @Date 2020/5/24 12:39
  * @Vsrsion 1.0
