@@ -1,0 +1,12 @@
+server:
+  port: 30000
+
+spring:
+  application:
+    name: mall-third-party
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 111.231.89.200:1111
+      config:
+        server-addr: 111.231.89.200:1111
