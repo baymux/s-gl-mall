@@ -6,17 +6,12 @@ import java.util.Map;
 
 import com.bay.mall.product.vo.SpuSaveVo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.bay.mall.product.entity.SpuInfoEntity;
 import com.bay.mall.product.service.SpuInfoService;
 import com.bay.common.utils.PageUtils;
 import com.bay.common.utils.R;
-
 
 
 /**
@@ -32,11 +27,24 @@ public class SpuInfoController {
     @Autowired
     private SpuInfoService spuInfoService;
 
+
+    /**
+     * 上架功能
+     * @param spuId
+     * @return
+     */
+    @PostMapping("/{spuId}/up")
+    public R spuUp(@PathVariable("spuId") Long spuId) {
+        spuInfoService.up(spuId);
+
+        return R.ok();
+    }
+
     /**
      * 列表
      */
     @RequestMapping("/list")
-        public R list(@RequestParam Map<String, Object> params){
+    public R list(@RequestParam Map<String, Object> params) {
         PageUtils page = spuInfoService.queryPageByConditton(params);
 
         return R.ok().put("page", page);
@@ -47,8 +55,8 @@ public class SpuInfoController {
      * 信息
      */
     @RequestMapping("/info/{id}")
-        public R info(@PathVariable("id") Long id){
-		SpuInfoEntity spuInfo = spuInfoService.getById(id);
+    public R info(@PathVariable("id") Long id) {
+        SpuInfoEntity spuInfo = spuInfoService.getById(id);
 
         return R.ok().put("spuInfo", spuInfo);
     }
@@ -57,7 +65,7 @@ public class SpuInfoController {
      * 保存
      */
     @RequestMapping("/save")
-        public R save(@RequestBody SpuSaveVo spuSaveVo){
+    public R save(@RequestBody SpuSaveVo spuSaveVo) {
         spuInfoService.saveSpuInfo(spuSaveVo);
 
         return R.ok();
@@ -67,8 +75,8 @@ public class SpuInfoController {
      * 修改
      */
     @RequestMapping("/update")
-        public R update(@RequestBody SpuInfoEntity spuInfo){
-		spuInfoService.updateById(spuInfo);
+    public R update(@RequestBody SpuInfoEntity spuInfo) {
+        spuInfoService.updateById(spuInfo);
 
         return R.ok();
     }
@@ -77,8 +85,8 @@ public class SpuInfoController {
      * 删除
      */
     @RequestMapping("/delete")
-        public R delete(@RequestBody Long[] ids){
-		spuInfoService.removeByIds(Arrays.asList(ids));
+    public R delete(@RequestBody Long[] ids) {
+        spuInfoService.removeByIds(Arrays.asList(ids));
 
         return R.ok();
     }

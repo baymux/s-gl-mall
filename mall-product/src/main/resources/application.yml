@@ -12,6 +12,8 @@ spring:
       connection-test-query: SELECT 1
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
+  thymeleaf:
+    cache: false
 
 
 mybatis-plus:
@@ -26,3 +28,6 @@ mybatis-plus:
 logging:
   level:
     com.bay.mall: debug
+
+
+
