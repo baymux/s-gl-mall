@@ -3,10 +3,12 @@ package com.bay.mall.product;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.bay.mall.product.entity.BrandEntity;
 import com.bay.mall.product.service.BrandService;
+import com.bay.mall.product.service.CategoryService;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.annotation.Resource;
+import java.util.Arrays;
 import java.util.List;
 
 @SpringBootTest
@@ -14,6 +16,17 @@ class MallProductApplicationTests {
 
     @Resource
     private BrandService brandService;
+
+    @Resource
+    private CategoryService categoryService;
+
+
+    @Test
+    public void testFindPath() {
+        Long[] catelogPath = categoryService.findCatelogPath(225L);
+        System.out.println(Arrays.asList(catelogPath));
+
+    }
 
     @Test
     void contextLoads() {
@@ -28,9 +41,12 @@ class MallProductApplicationTests {
 
         List<BrandEntity> list = brandService.list(new QueryWrapper<BrandEntity>().eq("brand_id", 1));
 
-        list.forEach(item ->{
+        list.forEach(item -> {
             System.out.println(item);
         });
     }
+
+
+
 
 }

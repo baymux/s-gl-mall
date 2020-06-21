@@ -3,7 +3,9 @@ package com.bay.mall.product.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.bay.common.utils.PageUtils;
 import com.bay.mall.product.entity.AttrGroupEntity;
+import com.bay.mall.product.vo.AttrGroupWithAttrsVo;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -16,5 +18,15 @@ import java.util.Map;
 public interface AttrGroupService extends IService<AttrGroupEntity> {
 
     PageUtils queryPage(Map<String, Object> params);
+
+    PageUtils queryPage(Map<String, Object> params, Long catelogId);
+
+    /**
+     * 根据分类Id查出所有的分组以及属性
+     * @param catelogId
+     * @return
+     */
+    List<AttrGroupWithAttrsVo> getAttrGroupWithAttrsByCatelogId(Long catelogId);
 }
+
 

@@ -1,6 +1,7 @@
 package com.bay.mall.product.controller;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 
@@ -43,13 +44,25 @@ public class CategoryController {
 
 
     /**
+     * 查出所有分类以及子分类,以树形结构组装
+     */
+    @RequestMapping("/list/tree")
+    public R listTree(){
+
+        List<CategoryEntity> categoryEntities =  categoryService.listWithTree();
+
+        return R.ok().put("data", categoryEntities);
+    }
+
+
+    /**
      * 信息
      */
     @RequestMapping("/info/{catId}")
         public R info(@PathVariable("catId") Long catId){
 		CategoryEntity category = categoryService.getById(catId);
 
-        return R.ok().put("category", category);
+        return R.ok().put("data", category);
     }
 
     /**
@@ -67,18 +80,28 @@ public class CategoryController {
      */
     @RequestMapping("/update")
         public R update(@RequestBody CategoryEntity category){
-		categoryService.updateById(category);
-
+        categoryService.updateCascade(category);
         return R.ok();
     }
 
+    /**
+     * 拖拽,修改排序层级
+     * @param categoryArray
+     * @return
+     */
+    @RequestMapping("/update/sort")
+    public R updateSort(@RequestBody CategoryEntity[] categoryArray){
+        categoryService.updateBatchById(Arrays.asList(categoryArray));
+
+        return R.ok();
+    }
     /**
      * 删除
      */
     @RequestMapping("/delete")
         public R delete(@RequestBody Long[] catIds){
-		categoryService.removeByIds(Arrays.asList(catIds));
-
+		//categoryService.removeByIds(Arrays.asList(catIds));
+        categoryService.removeMenuByIds(Arrays.asList(catIds));
         return R.ok();
     }
 
